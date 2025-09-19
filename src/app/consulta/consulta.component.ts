@@ -31,14 +31,19 @@ import { Cliente } from '../cadastro/cliente';
   styleUrl: './consulta.component.scss',
 })
 export class ConsultaComponent implements OnInit {
+  nomeBusca: string = ''
   listaClientes: Cliente[] = [];
   displayedColumns: string[] = ["id", "nome", "email", "dataNascimento", "cpf"];
 
   constructor(private service: ClienteService) {}
 
   ngOnInit() {
-    console.log('Passamos por aqui');
+    console.log('Passamos por aqui:consulta.ts');
     this.listaClientes = this.service.pesquisarCliente('');
+  }
+
+  pesquisar(){
+    this.service.pesquisarCliente(this.nomeBusca)
   }
 
 }
