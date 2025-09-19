@@ -18,7 +18,12 @@ export class ClienteService {
     }
 
     pesquisarCliente(nome: string) : Cliente[] {
-      return this.obterLocalStorage();
+      const todosClientes = this.obterLocalStorage();
+      
+      if (!nome) {
+        return todosClientes;
+      }
+      return todosClientes.filter(clienteSelecionado => clienteSelecionado.nome?.indexOf(nome) !== -1)
     }
 
     private obterLocalStorage(): Cliente[] {
