@@ -38,12 +38,12 @@ export class ConsultaComponent implements OnInit {
   constructor(private service: ClienteService) {}
 
   ngOnInit() {
-    console.log('Passamos por aqui:consulta.ts');
+    console.log("ngOnInit: ", this.service.pesquisarCliente(''))
     this.listaClientes = this.service.pesquisarCliente('');
   }
 
   pesquisar(){
-    this.service.pesquisarCliente(this.nomeBusca)
+    this.listaClientes = this.service.pesquisarCliente(this.nomeBusca)
   }
 
 }
